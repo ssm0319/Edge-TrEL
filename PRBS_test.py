@@ -15,7 +15,7 @@ for i in bit_arr:
     bit_rate =i*1e6 #1Mbps
     voltage = 5
     low = 0
-    folder_name = f'260708_ 2;1 P4, {voltage} V'
+    folder_name = f'file_name, {voltage} V'
     print (bit_rate)
     os.chdir(ref_path_bandwidth)
     try:
