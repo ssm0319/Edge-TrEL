@@ -89,6 +89,20 @@ def func_gen_setting_leading_edge_modify(func_gen,pulse_width, voltage, low,lead
     func_gen.write(f'SOURce1:BURst:STATe ON')
     func_gen.write(f'SOURce2:BURst:STATe ON')
 
+def funcgen_prbs_setting(func_gen, bit_rate, voltage, low):
+    PRBS_length = 127
+    func_gen.write('SOUR1:FUNC:EFIL "PRBS_file_name.tfwx"')
+    func_gen.write('SOUR1:FUNC:SHAP EFIL')
+    func_gen.write(f'SOUR1:Freq {bit_rate / PRBS_length} Hz')
+    func_gen.write(f'SOUR1:VOLTage:LEVel:High {voltage}')
+    func_gen.write(f'SOUR1:VOLTage:LEVel:Low {low}')
+
+    #Source 2 = Trigger clock
+    func_gen.write("SOUR2:FUNC:SHAP SQU")
+    func_gen.write(f"SOUR2:FREQ {bit_rate/PRBS_length} Hz")
+    func_gen.write("SOUR2:VOLT:LOW 0")
+    func_gen.write("SOUR2:VOLT:HIGH 5")
+
 def func_gen_output(func_gen):
     #synchronize ch1 and ch 2
     func_gen.write('SOURce1:PHASe:INITiate')
