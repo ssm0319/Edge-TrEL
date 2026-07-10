@@ -12,5 +12,6 @@ This repository contains the code for Edge-TrEL methodology.
 # Instruction 
 * Instrument.py: Equipment setting and connection method.
 * Measurement.py: Data acquisition and slicing.
-
+* EL_asymmetry.py: Example of measuring Trailing, leading edge and EL asymmetry.
+* PRBS_test.py: Example of PRBS data aquisition
 
