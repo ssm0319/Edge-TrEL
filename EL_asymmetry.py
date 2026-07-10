@@ -122,7 +122,3 @@ for v in pulse_voltage_range:
             edge_width = leading_edge_setup[col - 1]
             edge_difference[f'edge_differences{edge_width}'] = normalized_data_trailing.iloc[:, col] - normalized_data_mirror.iloc[:, col]
         edge_difference.to_csv(f'edge differences {pulse_voltage}V {pulse_width_label}us.csv')
-        
-
-    channel=channel_id,
-    text=f'all in one, finish')
