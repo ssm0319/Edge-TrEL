@@ -1,4 +1,4 @@
-import VLC_module
+import instrument as ins
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -25,18 +25,18 @@ for i in bit_arr:
         os.chdir(ref_path_bandwidth + folder_name)
 
 
-    func_gen = VLC_module.func_gen_connection()
-    scope = VLC_module.scope_connection()
+    func_gen = ins.func_gen_connection()
+    scope = ins.scope_connection()
     frequency = bit_rate/127
 
-    VLC_module.funcgen_prbs_setting(func_gen, bit_rate, voltage, low)
-    VLC_module.scope_setting(scope, bit_rate,voltage, low)
-    VLC_module.func_gen_output(func_gen)
+    ins.funcgen_prbs_setting(func_gen, bit_rate, voltage, low)
+    ins_module.scope_setting(scope, bit_rate,voltage, low)
+    ins_module.func_gen_output(func_gen)
 
     time.sleep(1)
     PRBS_data = pd.DataFrame()
     for i in range (0,10):
-        data = VLC_module.scope_ascii_measure(scope)
+        data = ins.scope_ascii_measure(scope)
         x = data[0]
         y2 = data[2]
         PRBS_data['Time'] = x
@@ -48,8 +48,8 @@ for i in bit_arr:
     plt.savefig(f"PRBS_{bit_rate/1E6}Mbps, {voltage}V.png", dpi=660)
     PRBS_data.to_csv(f"PRBS_{bit_rate/1E6}Mbps, {voltage}V.csv")
 
-    VLC_module.func_gen_off(func_gen)
-    VLC_module.scope_off(scope)
+    ins.func_gen_off(func_gen)
+    ins.scope_off(scope)
 
 
 
