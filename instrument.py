@@ -9,7 +9,7 @@ def scope_connection() -> Resource:
     visa_address = f'TCPIP0::{ip_address}::inst0::INSTR'
     try:
         scope = rm.open_resource(visa_address)
-        #print(f"Successfully connected: {scope.query('*IDN?')}")
+        print(f"Successfully connected: {scope.query('*IDN?')}")
     except pyvisa.VisaIOError:
         print(f" Can't find the equipment in {visa_address} ")
     return scope
